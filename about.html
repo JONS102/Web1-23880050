@@ -62,9 +62,78 @@
             </div>
         </nav>
     </header>
-    <section class="container">
-        <h1>About Us</h1>
-    </section>
+
+
+    <div id="content">
+        <!--Phải có 1 id content để tải thông tin liên quan-->
+
+        <section id="bannner-small">
+        </section>
+        <section class="container py-5">
+            <div class="row">
+                <div class="col-md-8 col-sm-12" id="about-us">
+
+                </div>
+                <div class="col-md-4 col-sm-12" id="visions">
+
+                </div>
+            </div>
+
+        </section>
+
+        <!-- TESTIMONIALS-->
+        <section class="container-fluid py-5" id="testimonials">
+            <div class="container">
+                <h1 class="text-white"> Testimonials</h1>
+                <div class="row py-3">
+                    <div class="col">
+                        <p class="text-black-50">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad cupiditate aperiam quasi vel quam voluptate tenetur nobis impedit commodi saepe, ullam ducimus debitis repudiandae possimus consequatur quo dignissimos nihil modi!</p>
+                        <span class="text-white">Patrick Pool</span><br/>
+                        <a href="#">info@demolink.org</a>
+
+                    </div>
+                    <div class="col">
+                        <p class="text-black-50">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad cupiditate aperiam quasi vel quam voluptate tenetur nobis impedit commodi saepe, ullam ducimus debitis repudiandae possimus consequatur quo dignissimos nihil modi!</p>
+                        <span class="text-white">Patrick Pool</span><br/>
+                        <a href="#">info@demolink.org</a>
+
+                    </div>
+                    <div class="col">
+                        <p class="text-black-50">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad cupiditate aperiam quasi vel quam voluptate tenetur nobis impedit commodi saepe, ullam ducimus debitis repudiandae possimus consequatur quo dignissimos nihil modi!</p>
+                        <span class="text-white">Patrick Pool</span><br/>
+                        <a href="#">info@demolink.org</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--our team-->
+        <section id="our-team" class="container py-5">
+            <h1>Our Team</h1>
+            <div class="row py-3">
+                <div class="col">
+                    <img src="images/our-team/team-1.jpg" alt="team-1" class="rounded-4 my-3 img-fluid">
+                    <h4>Emily Cramer</h4>
+                    <p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+                <div class="col">
+                    <img src="images/our-team/team-2.jpg" alt="team-2" class="rounded-4 my-3 img-fluid">
+                    <h4>Emily Cramer</h4>
+                    <p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+                <div class="col">
+                    <img src="images/our-team/team-3.jpg" alt="team-3" class="rounded-4 my-3 img-fluid">
+                    <h4>Emily Cramer</h4>
+                    <p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+                <div class="col">
+                    <img src="images/our-team/team-4.jpg" alt="team-4" class="rounded-4 my-3 img-fluid">
+                    <h4>Emily Cramer</h4>
+                    <p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+            </div>
+
+        </section>
+    </div>
     <!--footer-->
     <footer class="text-center container-fluid text-white py-3">
         <ul class="nav justify-content-center py-3" id="menu-footer">
@@ -133,6 +202,75 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+    <!--HandlebarsJS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js" integrity="sha512-E1dSFxg+wsfJ4HKjutk/WaCzK7S2wv1POn1RRPGh8ZK+ag9l244Vqxji3r6wgz9YBf6+vhQEYJZpSjqWFPg9gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/23880050.js"></script>
+
+    <!-- <script id="about-us-template" type="text/x-handlebars-template">
+        {{#each data}}
+        <h1 class="py-3">{{name}}</h1>
+        <div>
+            <img src="{{thumbpath}}" alt="{{name}}" class="float-start rounded-4 me-3">
+            <p class=" text-black-50">{{{summary}}}</p>
+            <a href="#" class="btn btn-link readmore ps-0" onclick="loadData('aboutus/{{id}}','details-template','content')">Read more</a>
+        </div>
+        {{/each}}
+    </script>
+
+    <script id="details-template" type="text/x-handlebars-template">
+        <div class="container">
+            {{#each data}}
+            <h1 class="py-3">{{name}}</h1>
+            <img src="{{imagepath}}" alt="{{name}}" class="float-start rounded-4">
+            <p>{{{description}}}</p>
+            {{/each}}
+        </div>
+    </script> -->
+    <script id="about-us-template" type="text/x-handlebars-template">
+        {{#each data}}
+        <h1 class="py-3">{{name}}</h1>
+        <div>
+            <img src="{{thumbpath}}" alt="{{name}}" class="float-start rounded-4 me-3">
+            <p class="text-black-50">{{{summary}}}</p>
+            <a href="#" class="btn btn-link readmore ps-0" onclick="loadData('aboutus/{{id}}', 'details-template', 'content')">Read more</a>
+        </div>
+        {{/each}}
+    </script>
+    <!--Our vision-->
+    <script id="visions-template" type="text/x-handlebars-template">
+        <h1 clas="py-3">Our Vision</h1>
+        {{#each data}}
+        <div class="clearfix mb- overflow-auto">
+            <a class="text-decoration-non" href="#" onclick="loadData('visions/{{id}}', 'details-template', 'content')">
+                <img src="{{thumbpath}}" alt="{{name}}" class="float-start rounded-4 me-3">
+                <h3 class="text-black">{{name}}</h3>
+                <p class="text-black-50">{{summary}}
+                </p>
+            </a>
+        </div>
+        {{/each}}
+    </script>
+
+    <!--Details-->
+    <script id="details-template" type="text/x-handlebars-template">
+        <div class="container py-5">
+            {{#each data}}
+
+            <h1 class="py-3">{{name}}</h1>
+            <img src="{{imagepath}}" alt="{{name}}" class="float-start rounded-4 me-3">
+            <p>{{{description}}}</p>
+            {{/each}}
+        </div>
+    </script>
+    <script>
+        loadData('aboutus', 'about-us-template', 'about-us');
+        loadData('ourvision', 'visions-template', 'visions');
+    </script>
 </body>
 
 </html>
+
+
+
+<!--  -->
