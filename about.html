@@ -32,12 +32,12 @@
                     <!--Đổi tên phần header tạo phần nút home-->
                     <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" href="index.html">Home
+                            <a class="nav-link" href="index.html">Home
                             <span class="visually-hidden">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
+                            <a class="nav-link active" href="about.html">About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="gallery.html">Gallery</a>
@@ -83,54 +83,10 @@
 
         <!-- TESTIMONIALS-->
         <section class="container-fluid py-5" id="testimonials">
-            <div class="container">
-                <h1 class="text-white"> Testimonials</h1>
-                <div class="row py-3">
-                    <div class="col">
-                        <p class="text-black-50">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad cupiditate aperiam quasi vel quam voluptate tenetur nobis impedit commodi saepe, ullam ducimus debitis repudiandae possimus consequatur quo dignissimos nihil modi!</p>
-                        <span class="text-white">Patrick Pool</span><br/>
-                        <a href="#">info@demolink.org</a>
 
-                    </div>
-                    <div class="col">
-                        <p class="text-black-50">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad cupiditate aperiam quasi vel quam voluptate tenetur nobis impedit commodi saepe, ullam ducimus debitis repudiandae possimus consequatur quo dignissimos nihil modi!</p>
-                        <span class="text-white">Patrick Pool</span><br/>
-                        <a href="#">info@demolink.org</a>
-
-                    </div>
-                    <div class="col">
-                        <p class="text-black-50">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad cupiditate aperiam quasi vel quam voluptate tenetur nobis impedit commodi saepe, ullam ducimus debitis repudiandae possimus consequatur quo dignissimos nihil modi!</p>
-                        <span class="text-white">Patrick Pool</span><br/>
-                        <a href="#">info@demolink.org</a>
-                    </div>
-                </div>
-            </div>
         </section>
         <!--our team-->
         <section id="our-team" class="container py-5">
-            <h1>Our Team</h1>
-            <div class="row py-3">
-                <div class="col">
-                    <img src="images/our-team/team-1.jpg" alt="team-1" class="rounded-4 my-3 img-fluid">
-                    <h4>Emily Cramer</h4>
-                    <p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                </div>
-                <div class="col">
-                    <img src="images/our-team/team-2.jpg" alt="team-2" class="rounded-4 my-3 img-fluid">
-                    <h4>Emily Cramer</h4>
-                    <p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                </div>
-                <div class="col">
-                    <img src="images/our-team/team-3.jpg" alt="team-3" class="rounded-4 my-3 img-fluid">
-                    <h4>Emily Cramer</h4>
-                    <p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                </div>
-                <div class="col">
-                    <img src="images/our-team/team-4.jpg" alt="team-4" class="rounded-4 my-3 img-fluid">
-                    <h4>Emily Cramer</h4>
-                    <p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                </div>
-            </div>
 
         </section>
     </div>
@@ -239,33 +195,65 @@
     </script>
     <!--Our vision-->
     <script id="visions-template" type="text/x-handlebars-template">
-        <h1 clas="py-3">Our Vision</h1>
+        <h1 class="py-3">Our Vision</h1>
         {{#each data}}
-        <div class="clearfix mb- overflow-auto">
-            <a class="text-decoration-non" href="#" onclick="loadData('visions/{{id}}', 'details-template', 'content')">
+        <div class="clearfix mb-3">
+            <!-- điiều chỉnh cho tự động điều chỉnh-->
+            <a class="text-decoration-none" href="#" onclick="loadData('visions/{{id}}', 'details-template', 'content')">
                 <img src="{{thumbpath}}" alt="{{name}}" class="float-start rounded-4 me-3">
                 <h3 class="text-black">{{name}}</h3>
-                <p class="text-black-50">{{summary}}
-                </p>
+                <p class="text-black-50">{{summary}}</p>
             </a>
         </div>
         {{/each}}
     </script>
-
+    <!--Testimonials-->
+    <script id="testimonials-template" type="text/x-handlebars-template">
+        <div class="container">
+            <h1 class="text-white"> Testimonials</h1>
+            <div class="row py-3">
+                {{#each data}}
+                <div class="col">
+                    <p class="text-black-50">{{summary}}</p>
+                    <span class="text-white">{{name}}</span><br/>
+                    <a href="#">{{email}}</a>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </script>
+    <!-- Our team template-->
+    <script id="our-tem-template" type="text/x-handlebars-template">
+        <h1>Our Team</h1>
+        <div class="row py-3">
+            {{#each data}}
+            <div class="col">
+                <a class="text-decoration-none" href="#" onclick="loadData('team/{{id}}','details-template','content')">
+                    <!-- phải thêm thông tin id để lấy người chi tiết-->
+                    <img src="{{thumbpath}}" alt="{{name}}" class="rounded-4 my-3 img-fluid">
+                    <h4 class="text-black">{{name}}</h4>
+                    <p class="text-black-50">{{summary}}</p>
+                </a>
+            </div>
+            {{/each}}
+        </div>
+    </script>
     <!--Details-->
     <script id="details-template" type="text/x-handlebars-template">
-        <div class="container py-5">
+        <div class="container py-5 overflow-auto">
             {{#each data}}
-
             <h1 class="py-3">{{name}}</h1>
             <img src="{{imagepath}}" alt="{{name}}" class="float-start rounded-4 me-3">
             <p>{{{description}}}</p>
+
             {{/each}}
         </div>
     </script>
     <script>
         loadData('aboutus', 'about-us-template', 'about-us');
-        loadData('ourvision', 'visions-template', 'visions');
+        loadData('visions', 'visions-template', 'visions'); //ourvisions? Làm gì có
+        loadData('team', 'our-tem-template', 'our-team');
+        loadData('testimonials', 'testimonials-template', 'testimonials');
     </script>
 </body>
 

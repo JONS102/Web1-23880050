@@ -131,6 +131,10 @@ h1 {
     background-color: var(--web-pink);
 }
 
+#aboutus h4 {
+    color: black;
+}
+
 #formSignUp {
     border-radius: 10px;
     border-style: dashed!important;
