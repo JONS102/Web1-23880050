@@ -49,9 +49,11 @@
                             <a class="nav-link" href="contacts.html">Contacts</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
+                            <a class="nav-link linkLogin" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
+                            <a class="nav-link linkLogout" href="#">Logout</a>
                         </li>
                     </ul>
+
                     <form class="d-flex my-2 my-lg-0 border rounded-pill" id="formSearch">
                         <input class="form-control ms-3 border-0" type="text" placeholder="Search" />
                         <button class="btn  my-2 my-sm-0" type="submit">
@@ -157,7 +159,8 @@
                 <a class="nav-link" href="contacts.html">Contacts</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
+                <a class="nav-link linkLogin" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
+                <a class="nav-link linkLogout" href="#">Logout</a>
             </li>
         </ul>
         <p class="text-white-50"> Copyright & copy: 2025 by Nguyễn Chính Ngọc -23880050</p>
@@ -174,19 +177,20 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="#" method="post" id="formLogin">
+                    <form action="#" method="post" id="formLogin" onsubmit="login(event)">
                         <h3 class="text-center"> Login Form</h3>
                         <div class="mb-3">
-                            <input type="text" name="username" id="username" placeholder="Username" class="form-control">
+                            <input type="text" name="username" id="username" placeholder="Username" class="form-control" required>
 
                         </div>
                         <div class="mb-3">
-                            <input type="password" name="password" id="password" placeholder="Password" class="form-control">
+                            <input type="password" name="password" id="password" placeholder="Password" class="form-control" required>
                         </div>
                         <button type="submit" class="form-control btn">Login</button>
                     </form>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer justify-content-center">
+                    <div class="texxt-danger" id="errormessage"></div>
                 </div>
             </div>
         </div>
@@ -265,6 +269,7 @@
     <script>
         //Gọi data bằng fetch API
         //ĐỊnh nghĩa luôn 1 hàm gọi async await để gọi data từ API
+        checkLogin();
         loadData('products', 'products-template', 'products');
         loadData('news', 'news-template', 'news');
 

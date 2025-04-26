@@ -249,8 +249,8 @@
                     } else {
                         let responseMessage = document.getElementById('responseMessage');
                         responseMessage.innerHTML = "Error: Can not verrify RECAPTCHA ";
-                        responseMessage.classList.remove();
-                        responMessage.classList.toggle('text-danger');
+
+                        responMessage.className = "text-danger";
                     }
                 });
             });
@@ -276,20 +276,17 @@
                     body: JSON.stringify(postData)
                 });
 
-                let ressult = await response.json();
+                let result = await response.json();
                 if (response.status == 200) {
-                    let responseMessage = document.getElementById('responseMessage');
-                    responseMessage.innerHTML = ressult.message;
-                    responseMessage.classList.remove();
-                    responseMessage.classList.toggle('text-success');
+                    responseMessage.innerHTML = result.message;
+                    responseMessage.className = "text-primary";
                 } else {
-                    throw new Error(ressult.message);
+                    throw new Error(result.message);
                 }
             } catch (error) {
 
                 responseMessage.innerHTML = error;
-                responseMessage.classList.remove();
-                responMessage.classList.toggle('text-danger');
+                responseMessage.className = "text-danger";
             }
 
 

@@ -33,3 +33,62 @@ async function getAuthenticateToken(username, password) {
         throw new Error("Authentication failed");
     }
 }
+async function login(e) {
+    e.preventDefault(); // ngăn chặn sự kiện mặc định của form
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+    document.getElementById("errormessage").innerHTML = ""; // xóa thông báo lỗi trước đó
+    try {
+        let token = await getAuthenticateToken(username, password); // gọi hàm lấy token
+        if (token) {
+            localStorage.setItem("token", token); // lưu token vào localStorage
+            document.getElementsByClassName('btn-close')[0].click(); // đóng modal
+            displayControls();
+        }
+    } catch (error) {
+        document.getElementById("errormessage").innerHTML = error.message; // hiển thị thông báo lỗi
+        displayControls(false);
+    }
+
+}
+
+function displayControls(isLogin = true) {
+    let linkLogins = document.getElementsByClassName('linkLogin');
+    let linkLogouts = document.getElementsByClassName('linkLogout');
+
+    let displayLogin = "none"; // chú ý phần hiển thị
+    let displayLogout = "block";
+    if (!isLogin) {
+        displayLogin = 'block';
+        displayLogout = 'none';
+    }
+
+    for (let i = 0; i < linkLogins.length; i++) {
+        linkLogins[i].style.display = displayLogin;
+        linkLogouts[i].style.display = displayLogout;
+    }
+
+}
+async function checkLogin() {
+    let isLogin = await verifyToken(); // gọi hàm xác thực token
+    displayControls(isLogin); // hiển thị các nút điều khiển dựa trên trạng thái đăng nhập
+
+}
+
+async function verifyToken() {
+    let token = localStorage.getItem("token");
+    if (token) {
+        let response = await fetch(`${AUTHENTICATE_API}/verify`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        if (response.status == 200) {
+            return true; // trả về true nếu xác thực thành công
+        }
+    }
+    return false; // trả về true nếu xác thực thành công, ngược lại false
+}
