@@ -224,8 +224,7 @@
                 <!--check lại khi di chuyển chuột ra phía ngoài-->
                 <h3>{{name}}</h3>
                 <p class="text-black-50">{{{summary}}}</p>
-                <a class="readmore btn btn-link pt-0" href="#" onclick="loadData('aboutus/{{id}}','detail-template','content')">
-                >Read more</a>
+                <a class="readmore btn btn-link pt-0" href="?request=products/{{id}}">Read more</a>
             </div>
             {{/each}}
         </div>
@@ -241,7 +240,7 @@
                     <div class="date text-white text-center rounded-4 py-1">
                         <h3>{{date}}</h3>
                     </div>
-                    <a href="#" class="btn btn-link readmore ps-0" onclick="loadData('news/{{id}}','details-template','content')">Read more</a>
+                    <a href="?request=news/{{id}}" class="btn btn-link readmore ps-0">Read more</a>
                 </div>
                 <div>
                     <h3>{{name}}</h3>
@@ -269,9 +268,17 @@
     <script>
         //Gọi data bằng fetch API
         //ĐỊnh nghĩa luôn 1 hàm gọi async await để gọi data từ API
-        checkLogin();
-        loadData('products', 'products-template', 'products');
-        loadData('news', 'news-template', 'news');
+
+        let searchParams = new URLSearchParams(location.search);
+        let request = searchParams.get('request'); //lấy giá trị của request từ URL
+        if (request) {
+            loadData(request, 'details-template', 'content');
+        } else {
+            checkLogin();
+            loadData('products', 'products-template', 'products');
+            loadData('news', 'news-template', 'news');
+        } // ham goi lai dia chi trang web cu Gium load lai noi dung trang web cu
+
 
         function setActiveImagePath(img, imagepath, isActive = true) //mặc định bằng true để không phải truyền vào dữ liệu
         {
