@@ -92,3 +92,8 @@ async function verifyToken() {
     }
     return false; // trả về true nếu xác thực thành công, ngược lại false
 }
+
+function logout() {
+    localStorage.clear(); // xóa token khỏi localStorage
+    displayControls(false); // cập nhật giao diện
+}
