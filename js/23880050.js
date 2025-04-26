@@ -37,7 +37,7 @@ async function login(e) {
     e.preventDefault(); // ngăn chặn sự kiện mặc định của form
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
-    document.getElementById("errormessage").innerHTML = ""; // xóa thông báo lỗi trước đó
+    document.getElementById("error-message").innerHTML = ""; // xóa thông báo lỗi trước đó
     try {
         let token = await getAuthenticateToken(username, password); // gọi hàm lấy token
         if (token) {
@@ -67,9 +67,14 @@ function displayControls(isLogin = true) {
         linkLogins[i].style.display = displayLogin;
         linkLogouts[i].style.display = displayLogout;
     }
-    let leaveComment = document.getElementsByClassName('leave-comment');
-    if (leaveCommnet) {
-        leaveComment.style.display = displayLogout;
+    let leaveComments = document.getElementsByClassName('leave-comment');
+    // if (leaveComment) {
+    //     leaveComment.style.display = displayLogout;
+    // }
+    if (leaveComments.length > 0) {
+        for (let i = 0; i < leaveComments.length; i++) {
+            leaveComments[i].style.display = displayLogout;
+        }
     }
 }
 async function checkLogin() {

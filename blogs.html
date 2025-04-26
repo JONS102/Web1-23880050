@@ -103,6 +103,12 @@
                 <a class="nav-link linkLogout" href="#" onclick="logout()" style="display:none">Logout</a>
             </li>
         </ul>
+        <form class="d-flex my-2 my-lg-0 border rounded-pill" id="formSearch" method="GET" action="search.html">
+            <input class="form-control ms-3 border-0" type="text" placeholder="Search" name="keyword" id="keyword" required>
+            <button class="btn  my-2 my-sm-0" type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        </form>
         <p class="text-white-50"> Copyright & copy: 2025 by Nguyễn Chính Ngọc -23880050</p>
     </footer>
 
@@ -130,19 +136,13 @@
                     </form>
                 </div>
                 <div class="modal-footer justify-content-center">
-                    <div class="texxt-danger" id="errormessage"></div>
+                    <div class="text-danger" id="error-message"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Optional: Place to the bottom of scripts -->
-    <script>
-        const myModal = new bootstrap.Modal(
-            document.getElementById("modalId"),
-            options,
-        );
-    </script>
+
 
     <!--favicon-->
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
@@ -156,6 +156,13 @@
     <script src="js/23880050.js"></script>
     <script src="js/handlebars-pagination-helper.js"></script>
 
+    <!-- Optional: Place to the bottom of scripts -->
+    <script>
+        const myModal = new bootstrap.Modal(
+            document.getElementById("modalId"),
+            options,
+        );
+    </script>
     <!--blog template-->
     <script id="blogs-template" type="text/x-handlebars-template">
         <h1>Blogs</h1>
@@ -325,7 +332,7 @@
                 agree: document.getElementById('agree').checked
             }
             try {
-                let response = await fetch(`${AUTHENTICATE_API}/comments`, {
+                let response = await fetch(`${AUTHENTICATE_API}/comment`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
