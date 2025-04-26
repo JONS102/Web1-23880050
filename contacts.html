@@ -201,7 +201,8 @@
                         <button type="submit" class="form-control btn">Login</button>
                     </form>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer justify-content-center">
+                    <div class="texxt-danger" id="errormessage"></div>
                 </div>
             </div>
         </div>
@@ -230,6 +231,8 @@
     <!-- Your code -->
     <script>
         // bắt buộc kiểm tra cái form để đánh giá dữ liệu
+        checkLogin();
+
         function onSubmit(e) {
             e.preventDefault();
             grecaptcha.enterprise.ready(async() => {

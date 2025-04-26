@@ -50,7 +50,8 @@
                             <a class="nav-link" href="contacts.html">Contacts</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
+                            <a class="nav-link linkLogin" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
+                            <a class="nav-link linkLogout" href="#" onclick="logout()">Logout</a>
                         </li>
                     </ul>
                     <form class="d-flex my-2 my-lg-0 border rounded-pill" id="formSearch">
@@ -59,6 +60,9 @@
                             <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                     </form>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <div class="texxt-danger" id="errormessage"></div>
                 </div>
             </div>
         </nav>
@@ -97,7 +101,8 @@
                 <a class="nav-link" href="contacts.html">Contacts</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
+                <a class="nav-link linkLogin" href="#" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a>
+                <a class="nav-link linkLogout" href="#" onclick="logout()">Logout</a>
             </li>
         </ul>
         <p class="text-white-50"> Copyright & copy: 2025 by Nguyễn Chính Ngọc -23880050</p>
@@ -126,7 +131,8 @@
                         <button type="submit" class="form-control btn">Login</button>
                     </form>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer justify-content-center">
+                    <div class="texxt-danger" id="errormessage"></div>
                 </div>
             </div>
         </div>
@@ -174,6 +180,7 @@
 
 
     <script>
+        checkLogin()
         loadData('gallery-categories', 'gallery-categories-template', 'gallery-categories');
         loadData('gallery', 'gallery-template', 'gallery');
 

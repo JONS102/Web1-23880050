@@ -67,7 +67,10 @@ function displayControls(isLogin = true) {
         linkLogins[i].style.display = displayLogin;
         linkLogouts[i].style.display = displayLogout;
     }
-
+    let leaveComment = document.getElementsByClassName('leave-comment');
+    if (leaveCommnet) {
+        leaveComment.style.display = displayLogout;
+    }
 }
 async function checkLogin() {
     let isLogin = await verifyToken(); // gọi hàm xác thực token
