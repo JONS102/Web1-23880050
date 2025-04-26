@@ -190,3 +190,23 @@ footer {
 
 
 /* Cài đặt dấu phẩy bên trái của dòng chữ?
+/* Blogs*/
+
+#blogs-categories li {
+    list-style-type: none;
+    background: url('../images/marker1.png') 0 0.25rem no-repeat;
+    padding: 0 0 0.5rem 1.5rem;
+}
+
+
+/*contact*/
+
+#map {
+    height: 400px;
+    width: 100%
+}
+
+btm-primary {
+    background-color: var(--web-blue)!important;
+    border: none;
+}
