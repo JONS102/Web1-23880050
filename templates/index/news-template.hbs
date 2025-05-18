@@ -6,7 +6,11 @@
                     <div class="date text-white text-center rounded-4 py-1">
                         <h3>{{date}}</h3>
                     </div>
-                    <a href="?request=news/{{id}}" class="btn btn-link readmore ps-0">Read more</a>
+                   <a class="readmore btn btn-link pt-0"
+                    href="#"
+                    onclick="loadData('news/{{id}}','details-template','content'); return false;">
+                    Read more
+                    </a>
                 </div>
                 <div>
                     <h3>{{name}}</h3>

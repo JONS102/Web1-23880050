@@ -4,12 +4,18 @@ const AUTHENTICATE_API = "https://web1-api.vercel.app/users";
 async function loadData(request, templateId, viewId) {
     const response = await fetch(`${API}/${request}`);
     const data = await response.json();
-    // var source = document.getElementById(templateId).innerHTML;
-    // var template = Handlebars.compile(source);
-    var context = { data: data };
-    var template = Handlebars.templates[`${templateId}.hbs`]
-    var context = { data: data };
+    console.log(data);
+
+    var template = Handlebars.templates[`${templateId}.hbs`];
+    // Nếu data không phải mảng, ép thành mảng
+    var context = Array.isArray(data) ? { data } : { data: [data] }; // ép mảng
     var view = document.getElementById(viewId);
+
+    if (!view) {
+        console.error(`Không tìm thấy phần tử với id: ${viewId}`);
+        return;
+    }
+
     view.innerHTML = template(context);
 }
 

@@ -225,7 +225,10 @@
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     <script src="js/map.js"></script>
 
-    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeYbCQrAAAAAG02FUdIsXHE7u_3_prijwBkf_AL"></script>
+
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdRzD4rAAAAAPUgDcDsTgPLzo4JJZe0AZylnG6Y"></script>
+    <!-- Your code -->
+
 
     <!--Check authendication-->
     <script src="js/23880050.js"></script>
@@ -237,7 +240,7 @@
         function onSubmit(e) {
             e.preventDefault();
             grecaptcha.enterprise.ready(async() => {
-                const token = await grecaptcha.enterprise.execute('6LeYbCQrAAAAAG02FUdIsXHE7u_3_prijwBkf_AL', {
+                const token = await grecaptcha.enterprise.execute('6LdRzD4rAAAAAPUgDcDsTgPLzo4JJZe0AZylnG6Y', {
                     action: 'submit'
                 }).then(async function(token) {
                     let response = await fetch('verify.php', {
